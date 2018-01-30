@@ -5,7 +5,10 @@ from utilities.language import flatten
 class LanguageFlattenTest(TestCase):
 
     def test_none_value(self):
-        self.assertEqual([], flatten(None))
+        self.assertEqual([[None]], flatten(None))
+
+    def test_scalar_value(self):
+        self.assertEqual([[1]], flatten(1))
 
     def test_empty_tuple_value(self):
         self.assertEqual([], flatten(tuple()))

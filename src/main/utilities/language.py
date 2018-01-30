@@ -6,8 +6,6 @@ def load_yaml_file(file_path):
 
 # TODO 適切な名前を考える.
 def flatten(x):
-    if x == None:
-        return []
     return list(_flatten(x, leading_values=[]))
 
 def _flatten(x, leading_values):
