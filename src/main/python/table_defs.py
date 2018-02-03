@@ -1,6 +1,6 @@
 from collections import namedtuple
 
-from utilities.closeable import Closeable
+from closeable import Closeable
 
 TableDef = namedtuple("TableDef", (
     "host",
