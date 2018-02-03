@@ -12,9 +12,9 @@
 
 ## アプリケーションを実行する
 
-    docker-compose run app python src/main/python/main.py
+    docker-compose run app invoke run
 
 ## テストを実行する
 
-    docker-compose run app python -m unittest discover -s src/test/python -t .
+    docker-compose run app invoke test
 
