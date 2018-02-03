@@ -1,5 +1,6 @@
 import os
 
+from bigquery import generate_bigquery_table_schema_json
 from connection_factory import ConnectionFactory
 from table_defs import load_table_defs
 from utilities.language import generate_paths
@@ -10,7 +11,7 @@ def main():
     table_defs = create_table_defs(connection_factory)
 
     for table_def in table_defs:
-        print(table_def)
+        print(generate_bigquery_table_schema_json(table_def))
 
 def config_file_path(name):
     base_dir = os.path.abspath(os.path.dirname(__file__))
