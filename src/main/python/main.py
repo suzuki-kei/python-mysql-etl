@@ -9,8 +9,10 @@ from utilities.language import generate_paths
 from utilities.language import load_yaml_file
 
 def main():
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    table_defs_file_path = os.path.join(base_dir, "table-defs.yml")
+    root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
+    resources_dir = os.path.join(root_dir, "src", "main", "resources")
+    table_defs_file_path = os.path.join(resources_dir, "table-defs.yml")
+
     for table_def in load_table_defs(table_defs_file_path):
         print(table_def)
 

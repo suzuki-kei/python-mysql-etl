@@ -12,6 +12,6 @@
 
     docker-compose run python bash
     pip install -r requirements.txt
-    python src/main/main.py
-    PYTHONPATH=src/main python src/test/utilities/language_test.py
+    python src/main/python/main.py
+    PYTHONPATH=src/main/python python src/test/python/utilities/language_test.py
 
