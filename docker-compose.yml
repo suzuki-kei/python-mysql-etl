@@ -13,7 +13,7 @@ services:
             - --collation-server=utf8mb4_unicode_ci
         volumes:
             - "./volumes/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
-    python:
+    app:
         image: python:3
         restart: "no"
         environment:

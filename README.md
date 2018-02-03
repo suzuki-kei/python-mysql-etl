@@ -10,7 +10,7 @@
 
 ## Python コンテナに接続する
 
-    docker-compose run python bash
+    docker-compose run app bash
     pip install -r requirements.txt
     python src/main/python/main.py
     PYTHONPATH=src/main/python python src/test/python/utilities/language_test.py
