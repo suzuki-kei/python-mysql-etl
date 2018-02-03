@@ -1,12 +1,10 @@
+from wrapt import ObjectProxy
 
-class Closeable(object):
-
-    def __init__(self, closeable):
-        self.closeable = closeable
+class Closeable(ObjectProxy):
 
     def __enter__(self):
-        pass
+        return self
 
     def __exit__(self, type, value, traceback):
-        self.closeable.close()
+        self.close()
 

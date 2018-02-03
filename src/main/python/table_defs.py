@@ -25,8 +25,7 @@ ColumnDef = namedtuple("ColumnDef", (
 
 def load_table_defs(table_defs_file_path):
     def create_table_def(host, database, table):
-        connection = create_connection(host)
-        with Closeable(connection):
+        with Closeable(create_connection(host)) as connection:
             column_defs = get_column_defs(connection, database, table)
             print(column_defs)
             return TableDef(host, database, table, column_defs)
@@ -67,8 +66,7 @@ def get_column_defs(connection, database, table):
         ORDER BY
             ORDINAL_POSITION
     """
-    cursor = connection.cursor(dictionary=True)
-    with Closeable(cursor):
+    with Closeable(connection.cursor(dictionary=True)) as cursor:
         cursor.execute(sql, (database, table))
         return list(map(column_def_from_row, cursor.fetchall()))
 
