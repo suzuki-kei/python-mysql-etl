@@ -1,6 +1,6 @@
 import json
 
-def generate_bigquery_table_schema_json(table_def):
+def generate_table_schema_json(table_def):
     columns = list(map(to_bigquery_column_def, table_def.column_defs))
     return json.dumps(columns, indent=4)
 
