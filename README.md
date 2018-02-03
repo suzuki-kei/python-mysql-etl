@@ -8,10 +8,11 @@
 
     docker-compose exec mysql bash -c 'mysql -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE'
 
-## Python コンテナに接続する
+## アプリケーションを実行する
 
-    docker-compose run app bash
-    pip install -r requirements.txt
-    python src/main/python/main.py
-    PYTHONPATH=src/main/python python src/test/python/utilities/language_test.py
+    docker-compose run app python src/main/python/main.py
+
+## テストを実行する
+
+    docker-compose run app python src/test/python/utilities/language_test.py
 

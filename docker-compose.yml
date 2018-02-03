@@ -14,16 +14,14 @@ services:
         volumes:
             - "./volumes/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d"
     app:
-        image: python:3
+        build:
+            context: .
+            dockerfile: Dockerfile.app
         restart: "no"
         environment:
-            - MYSQL_USER=hoge
-            - MYSQL_PASSWORD=hoge
-            - MYSQL_DATABASE=hoge
-            - MYSQL_RANDOM_ROOT_PASSWORD=yes
+            - PYTHONPATH=src/main/python
         links:
             - mysql:db
-        working_dir: /app
         volumes:
             - "./requirements.txt:/app/requirements.txt:ro"
             - "./src:/app/src:ro"
