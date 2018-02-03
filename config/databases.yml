@@ -1,7 +1,13 @@
 - host: db
-  user: hoge
-  password: hoge
-  database: hoge
+  database: product
+  user: product-user
+  password:
+  charset: utf8mb4
+  collation: utf8mb4_unicode_ci
+- host: db
+  database: marketing
+  user: marketing-user
+  password:
   charset: utf8mb4
   collation: utf8mb4_unicode_ci
 

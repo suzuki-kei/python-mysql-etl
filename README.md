@@ -4,9 +4,11 @@
 
     docker-compose up -d
 
-## MySQL コンテナに接続する
+## MySQL に接続する
 
-    docker-compose exec mysql bash -c 'mysql -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE'
+    docker-compose exec mysql mysql -uroot
+    docker-compose exec mysql mysql -uproduct-user product
+    docker-compose exec mysql mysql -umarketing-user marketing
 
 ## アプリケーションを実行する
 
