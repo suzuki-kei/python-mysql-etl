@@ -1,10 +1,6 @@
 from collections import namedtuple
 
-import mysql.connector
-
 from utilities.closeable import Closeable
-from utilities.language import generate_paths
-from utilities.language import load_yaml_file
 
 TableDef = namedtuple("TableDef", (
     "host",
@@ -23,28 +19,16 @@ ColumnDef = namedtuple("ColumnDef", (
     "is_primary_key",
 ))
 
-def load_table_defs(table_defs_file_path):
-    def create_table_def(host, database, table):
-        with Closeable(create_connection(host)) as connection:
-            column_defs = get_column_defs(connection, database, table)
-            print(column_defs)
-            return TableDef(host, database, table, column_defs)
-    return [create_table_def(host, database, table)
-            for (host, database, table)
-            in generate_paths(load_yaml_file(table_defs_file_path))]
+def load_table_defs(host_database_table_list, connection_factory):
+    return [create_table_def(host, database, table, connection_factory)
+            for (host, database, table) in host_database_table_list]
 
-# TODO host 以外が決め打ちになっている.
-def create_connection(host):
-    return mysql.connector.connect(
-        host=host,
-        user="hoge",
-        password="hoge",
-        database="hoge",
-        charset="utf8mb4",
-        collation="utf8mb4_unicode_ci",
-    )
+def create_table_def(host, database, table, connection_factory):
+    with Closeable(connection_factory.connect(host, database)) as connection:
+        column_defs = get_column_defs(database, table, connection)
+        return TableDef(host, database, table, column_defs)
 
-def get_column_defs(connection, database, table):
+def get_column_defs(database, table, connection):
     def column_def_from_row(row):
         return ColumnDef(
             table          = row["TABLE_NAME"],
