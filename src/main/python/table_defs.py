@@ -6,7 +6,7 @@ TableDef = namedtuple("TableDef", (
     "host",
     "database",
     "table",
-    "columns",
+    "column_defs",
 ))
 
 ColumnDef = namedtuple("ColumnDef", (
