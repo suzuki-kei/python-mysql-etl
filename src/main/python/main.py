@@ -1,8 +1,8 @@
 import os
 
+import table_defs
 from bigquery import generate_bigquery_table_schema_json
 from connection_factory import ConnectionFactory
-from table_defs import load_table_defs
 from utilities.language import generate_paths
 from utilities.language import load_yaml_file
 
@@ -24,7 +24,7 @@ def create_connection_factory():
 
 def create_table_defs(connection_factory):
     host_database_table_list = generate_paths(load_yaml_file(config_file_path("tables.yml")))
-    return load_table_defs(host_database_table_list, connection_factory)
+    return table_defs.create_table_defs(host_database_table_list, connection_factory)
 
 if __name__ == "__main__":
     main()
