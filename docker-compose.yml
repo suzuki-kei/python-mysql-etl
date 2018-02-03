@@ -27,4 +27,5 @@ services:
         volumes:
             - "./requirements.txt:/app/requirements.txt:ro"
             - "./src:/app/src:ro"
+            - "./config:/app/config:ro"
 
