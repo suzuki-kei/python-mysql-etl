@@ -5,7 +5,7 @@ import yaml
 import mysql.connector
 
 from utilities.closeable import Closeable
-from utilities.language import flatten
+from utilities.language import generate_paths
 from utilities.language import load_yaml_file
 
 def main():
@@ -39,7 +39,8 @@ def load_table_defs(table_defs_file_path):
             print(column_defs)
             return TableDef(host, database, table, column_defs)
     return [create_table_def(host, database, table)
-            for (host, database, table) in flatten(load_yaml_file(table_defs_file_path))]
+            for (host, database, table)
+            in generate_paths(load_yaml_file(table_defs_file_path))]
 
 # TODO host 以外が決め打ちになっている.
 def create_connection(host):
