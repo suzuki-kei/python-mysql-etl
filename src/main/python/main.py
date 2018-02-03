@@ -3,8 +3,8 @@ import os
 import table_defs
 from bigquery import generate_bigquery_table_schema_json
 from connection_factory import ConnectionFactory
-from utilities.language import generate_paths
-from utilities.language import load_yaml_file
+from utilities import generate_paths
+from utilities import load_yaml_file
 
 def main():
     connection_factory = create_connection_factory()

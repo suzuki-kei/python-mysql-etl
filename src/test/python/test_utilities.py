@@ -1,6 +1,6 @@
 from unittest import main, TestCase
 
-from utilities.language import generate_paths
+from utilities import generate_paths
 
 class LanguageGeneratePathsTest(TestCase):
 
