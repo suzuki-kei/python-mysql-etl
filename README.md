@@ -14,5 +14,5 @@
 
 ## テストを実行する
 
-    docker-compose run app python src/test/python/utilities/language_test.py
+    docker-compose run app python -m unittest discover -s src/test/python -t .
 
