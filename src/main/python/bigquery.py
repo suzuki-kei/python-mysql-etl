@@ -11,28 +11,29 @@ def to_bigquery_column_def(column_def):
         "required": column_def.is_nullable == False,
     }
 
+TO_BIGQUERY_COLUMN_TYPE_MAP = dict(
+    int        = "integer",
+    tinyint    = "integer",
+    smallint   = "integer",
+    mediumint  = "integer",
+    bigint     = "integer",
+    float      = "float",
+    double     = "float",
+    decimal    = "float",
+    varchar    = "string",
+    char       = "string",
+    text       = "string",
+    tinytext   = "string",
+    mediumtext = "string",
+    longtext   = "string",
+    time       = "time",
+    date       = "date",
+    timestamp  = "timestamp",
+    datetime   = "timestamp",
+    set        = "string",
+    enum       = "string",
+)
+
 def to_bigquery_column_type(mysql_column_type):
-    return {
-        "int":        "integer",
-        "tinyint":    "integer",
-        "smallint":   "integer",
-        "mediumint":  "integer",
-        "bigint":     "integer",
-        "float":      "float",
-        "double":     "float",
-        "decimal":    "float",
-        "varchar":    "string",
-        "char":       "string",
-        "text":       "string",
-        "tinytext":   "string",
-        "mediumtext": "string",
-        "longtext":   "string",
-        "time":       "time",
-        "date":       "date",
-        "timestamp":  "timestamp",
-        "datetime":   "timestamp",
-        "date":       "timestamp",
-        "set":        "string",
-        "enum":       "string",
-    }.get(mysql_column_type, "string")
+    return TO_BIGQUERY_COLUMN_TYPE_MAP.get(mysql_column_type, "string")
 
