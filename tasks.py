@@ -3,7 +3,7 @@ from invoke import task
 @task
 def run(context):
     """アプリケーションを実行する."""
-    context.run("python src/main/python/main.py")
+    context.run("python src/main/python/application.py --config-dir=./config")
 
 @task(name="test:unit")
 def test(context):
