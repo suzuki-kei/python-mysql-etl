@@ -25,4 +25,5 @@ services:
             - "./tasks.py:/app/tasks.py:ro"
             - "./src:/app/src:ro"
             - "./config:/app/config:ro"
+            - "./tmp:/app/tmp"
 
