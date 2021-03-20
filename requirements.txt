@@ -1,4 +1,4 @@
-PyYAML==3.12
+PyYAML==5.1
 invoke==0.22.1
 mysql-connector-python-rf==2.2.2
 wrapt==1.10.11
