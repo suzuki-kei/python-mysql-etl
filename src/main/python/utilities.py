@@ -2,7 +2,7 @@ import yaml
 
 def load_yaml_file(file_path):
     with open(file_path, "r") as file:
-        return yaml.load(file)
+        return yaml.safe_load(file)
 
 def generate_paths(x):
     """dict 値を木構造とみなし, 各リーフノード (非コレクション値) までのパスを列挙する.
